@@ -1,0 +1,54 @@
+/* pages/setting/setting.wxss */
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container_1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: 1;
+}
+
+.Dialog{
+  position: absolute;
+  left: 80rpx;
+  bottom: 10rpx;
+  background-color: #fdf9ee;
+  width: 600rpx;
+  height: 300rpx;
+  z-index: 4;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.Dialog_container1{
+  position: absolute;
+  width: 100%;
+  height: 60rpx;
+  background-color:#b5c4b1;
+}
+
+.icon_container{
+  position: relative;
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.setting_title{
+  position: absolute;
+  top: 10rpx;
+  left: 275rpx;
+  font-size: 25rpx;
+  color: #fffaf4;
+}

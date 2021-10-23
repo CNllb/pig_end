@@ -1,0 +1,28 @@
+<view>
+  <image src="../../images/init_background.jpg" class=".bg" mode="aspectFill"></image>
+  <view class="container_3">
+  </view>
+  <view class="fastpass_container" style="opacity: {{0.3}};"></view>
+  <view class="setting_icon">
+    <view class="iconfont icon-setting-filling" style="font-size: 30rpx;color: #656565;" bindtap="toSetting"></view>
+  </view>
+  <view class="pages_icon">
+    <view class="iconfont icon-page" style="font-size: 30rpx;color: #656565;" bindtap="toDetail"></view>
+  </view>
+  <view class="fast_pass">
+    <text class="fast_pass_text" bindtap="toClassic">快速开始游戏</text>
+  </view>
+  <view class="classic_container" bindtap="toClassic">
+    <image src="../../images/the_god_of_wealth.png" mode="heightFix" style="opacity: 0.8;"></image>
+    <text class="classic_container_text">经典对局</text>
+  </view>
+  <view class="confict_ai" bindtap="toPersonWithAi">
+    <view style="position:relative;text-align: center;top: 20rpx;">人机对战</view>
+  </view>
+  <view class="confict_ai_to_ai" bindtap="toAiWithAi">
+    <view style="position:relative;text-align: center;top: 20rpx;">AI大比拼</view>
+  </view>
+  <view class="confict_without_internet">
+    <view style="position:relative;text-align: center;top: 20rpx;" bindtap="toConfictNoline">离线对战</view>
+  </view>
+</view>

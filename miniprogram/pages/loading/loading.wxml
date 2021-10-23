@@ -1,0 +1,41 @@
+<!--pages/loading/loading.wxml-->
+<view>
+  <image src="../../images/init_background.jpg" class="bg" mode="aspectFill"></image>
+  <view wx:if="{{isHide}}">
+    <view class="title">
+      猪尾巴
+    </view>
+    <view style="background-color: #8696a7;" class="login_button" lang="zh_CN">
+      <text class="login_button_text" bindtap="toLogin">账号登录</text>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="Dialog">
+      <view class="Dialog_container1">
+        <view class="icon_container">
+          <view class="iconfont icon-back1 icon_container" style="color: blanchedalmond; font-size: 30rpx;"
+            bindtap="toLoading"></view>
+        </view>
+        <text class="login_title">账号登录</text>
+      </view>
+      <view class="Dialog_container2">
+          <form bindsubmit="login">
+            <view>
+            <text class="login_text_1">账号：</text>
+            <input class="input_1" placeholder-style="font-size:20rpx" name="student_id"  placeholder="请输入账号" value="{{student_id}}" auto-focus />
+          </view>
+          <view>
+            <text class="login_text_2">密码：</text>
+            <input class="input_2" password placeholder-style="font-size:20rpx" placeholder="请输入密码" name="password" value="{{password}}"
+              auto-focus />
+          </view>
+          <view class="login">
+            <button form-type="submit" style="font-size: 35rpx; color: white;">
+            登录
+          </button>
+          </view>
+          </form>
+      </view>
+    </view>
+  </view>
+</view>
