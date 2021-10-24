@@ -47,6 +47,12 @@
           "pathName": "pages/confict_classic/confict_classic",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "人机对战",
+          "pathName": "pages/confict_person_with_ai/confict_person_with_ai",
+          "query": "",
+          "scene": null
         }
       ]
     }

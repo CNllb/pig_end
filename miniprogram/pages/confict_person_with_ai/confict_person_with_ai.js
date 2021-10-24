@@ -1,20 +1,19 @@
 // pages/confict_noline/confict_noline.js
 Page({
   data: {
-    top_card: null,
-    player: "玩家一",
+    winner: "",
+    player_1: "玩家",
+    player_2: "AI",
     isStarted: false,
-    now_index: 0,
-    get_pork_block: true,
-    Gaming: false,
-    get_pork_set: [],
-    set_pork_block: false,
-    set_pork_set: [],
     now_value: null,
     last_value: null,
-    now_pork: [],
-    top_card: [],
-    winner: null,
+    now_index: 0,
+    now_pork: null,
+    Gaming: false,
+    get_pork_set: [],
+    set_pork_set: [],
+    get_pork_block: true,
+    set_pork_block: false,
     get_pork_black_peach_count: 13,
     get_pork_red_heart_count: 13,
     get_pork_black_flower_count: 13,
@@ -23,18 +22,27 @@ Page({
     player1_red_heart_count: 0,
     player1_black_flower_count: 0,
     player1_red_block_count: 0,
+    player1_black_peach: [],
+    player1_red_heart: [],
+    player1_black_flower: [],
+    player1_red_block: [],
+    player1_top_black_peach: null,
+    player1_top_red_heart: null,
+    player1_top_black_flower: null,
+    player1_top_red_block: null,
     player2_black_peach_count: 0,
     player2_red_heart_count: 0,
     player2_black_flower_count: 0,
     player2_red_block_count: 0,
-    player_black_peach_count: 0,
-    player_red_heart_count: 0,
-    player_black_flower_count: 0,
-    player_red_block_count: 0,
-    player_black_peach: [],
-    player_red_heart: [],
-    player_black_flower: [],
-    player_red_block: [],
+    player2_black_peach: [],
+    player2_red_heart: [],
+    player2_black_flower: [],
+    player2_red_block: [],
+    player2_top_black_peach: null,
+    player2_top_red_heart: null,
+    player2_top_black_flower: null,
+    player2_top_red_block: null,
+    AI_pork_set: [],
     back_pork: "cloud://pig-end-7gjiedyf4997574e.7069-pig-end-7gjiedyf4997574e-1307703420/pork_image/0_53.png",
     pork_set: [{
         value: 1,
@@ -245,39 +253,9 @@ Page({
         image_Util: "cloud://pig-end-7gjiedyf4997574e.7069-pig-end-7gjiedyf4997574e-1307703420/pork_image/0_52.png"
       },
     ],
-    player_card_black_peach: [],
-    player_card_red_heart: [],
-    player_card_black_flower: [],
-    player_card_red_block: [],
-    player1_card_black_peach: [
 
-    ],
-    player1_card_red_heart: [
-
-    ],
-    player1_card_black_flower: [
-
-    ],
-    player1_card_red_block: [
-
-    ],
-    player2_card_black_peach: [
-
-    ],
-    player2_card_red_heart: [
-
-    ],
-    player2_card_black_flower: [
-
-    ],
-    player2_card_red_block: [
-
-    ],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     const self = this;
     wx.loadFontFace({
@@ -310,10 +288,12 @@ Page({
     });
   },
 
-  toNext_1: function () {
+  POP_Get_pork_2: function () {
+    var that = this;
     this.data.last_value = this.data.now_value;
-    this.data.now_index += 1;
     this.data.now_pork = this.data.get_pork_set.pop();
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork);
     switch (Math.floor((this.data.now_pork.value - 1) / 13)) {
       case 0:
         this.setData({
@@ -336,118 +316,76 @@ Page({
         })
         break;
     };
-    this.data.set_pork_set.push(this.data.now_pork);
-    this.data.now_value = this.data.now_pork.value;
-    console.log("last_value:" + this.data.last_value);
-    console.log("now_value:" + this.data.now_value);
-    if (this.data.now_index % 2 == 0) {
-      if (Math.floor((this.data.now_value - 1) / 13) == Math.floor((this.data.last_value - 1) / 13)) {
-        while (this.data.set_pork_set.length != 0) {
-          pork_1 = this.data.set_pork_set.pop();
-          console.log(pork_1);
-          switch (Math.floor((pork_1.value - 1) / 13)) {
-            case 0:
-              this.setData({
-                player_black_peach: pork_1
-              })
-              this.data.player1_card_black_peach.push(pork_1);
-              break;
-            case 1:
-              this.setData({
-                player_red_heart: pork_1
-              })
-              this.data.player1_card_red_heart.push(pork_1);
-              break;
-            case 2:
-              this.setData({
-                player_black_flower: pork_1
-              })
-              this.data.player1_card_black_flower.push(pork_1);
-              break;
-            default:
-              this.setData({
-                player_red_block: pork_1
-              })
-              this.data.player1_card_red_block.push(pork_1);
-              break;
-          }
-        }
-      }
-    } else {
-      if (Math.floor((this.data.now_value - 1) / 13) == Math.floor((this.data.last_value - 1) / 13)) {
-        while (this.data.set_pork_set.length != 0) {
-          var pork_1 = [];
-          pork_1 = this.data.set_pork_set.pop();
-          console.log(pork_1);
-          switch (Math.floor((pork_1.value - 1) / 13)) {
-            case 0:
-              this.setData({
-                player_black_peach: pork_1
-              })
-              this.data.player2_card_black_peach.push(pork_1);
-              break;
-            case 1:
-              this.setData({
-                player_red_heart: pork_1
-              })
-              this.data.player2_card_red_heart.push(pork_1);
-              break;
-            case 2:
-              this.setData({
-                player_black_flower: pork_1
-              })
-              this.data.player2_card_black_flower.push(pork_1);
-              break;
-            default:
-              this.setData({
-                player_red_block: pork_1
-              })
-              this.data.player2_card_red_block.push(pork_1);
-              break;
-          }
-        }
-      }
-    }
-    this.data.player1_black_peach_count = this.data.player1_card_black_peach.length;
-    this.data.player1_red_heart_count = this.data.player1_card_red_heart.length;
-    this.data.player1_black_flower_count = this.data.player1_card_black_flower.length;
-    this.data.player1_red_block_count = this.data.player1_card_red_block.length;
-    this.data.player2_black_peach_count = this.data.player2_card_black_peach.length;
-    this.data.player2_red_heart_count = this.data.player2_card_red_heart.length;
-    this.data.player2_black_flower_count = this.data.player2_card_black_flower.length;
-    this.data.player2_red_block_count = this.data.player2_card_red_block.length;
-    this.data.player_card_black_peach = this.data.now_index % 2 == 0 ? this.data.player1_card_black_peach : this.data.player2_card_black_peach;
-    this.data.player_card_red_heart = this.data.now_index % 2 == 0 ? this.data.player1_card_red_heart : this.data.player2_card_red_heart;
-    this.data.player_card_black_flower = this.data.now_index % 2 == 0 ? this.data.player1_card_black_flower : this.data.player2_card_black_flower;
-    this.data.player_card_red_block = this.data.now_index % 2 == 0 ? this.data.player1_card_red_block : this.data.player2_card_red_block;
-    if (this.data.get_pork_set.length == 0) {
-      if ((this.data.player1_black_peach_count + this.data.player1_red_heart_count + this.data.player1_black_flower_count + this.data.player1_red_block_count) > (this.data.player2_black_peach_count + this.data.player2_red_heart_count + this.data.player2_black_flower_count + this.data.player2_red_block_count)) {
-        this.setData({
-          winner: "玩家二"
-        })
-      } else {
-        this.setData({
-          winner: "玩家一"
-        })
-      }
-    }
+    that.check_card_2();
+    that.check_winner();
     this.setData({
-      player: this.data.now_index % 2 == 0 ? "玩家一" : "玩家二",
-      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
       set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
-      top_card: this.data.now_pork,
-      player_black_peach_count: this.data.now_index % 2 == 0 ? this.data.player1_black_peach_count : this.data.player2_black_peach_count,
-      player_red_heart_count: this.data.now_index % 2 == 0 ? this.data.player1_red_heart_count : this.data.player2_red_heart_count,
-      player_black_flower_count: this.data.now_index % 2 == 0 ? this.data.player1_black_flower_count : this.data.player2_black_flower_count,
-      player_red_block_count: this.data.now_index % 2 == 0 ? this.data.player1_red_block_count : this.data.player2_red_block_count,
-      Gaming: this.data.get_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player2_black_peach_count: this.data.player2_black_peach.length,
+      player2_red_heart_count: this.data.player2_red_heart.length,
+      player2_black_flower_count: this.data.player2_black_flower.length,
+      player2_red_block_count: this.data.player2_red_block.length,
     });
+    that.set_top_card_2();
     if (this.data.get_pork_set.length == 0) {
       this.setData({
         get_pork_block: true
       })
     }
+  },
 
+  POP_Get_pork_1: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.get_pork_set.pop();
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    switch (Math.floor((this.data.now_pork.value - 1) / 13)) {
+      case 0:
+        this.setData({
+          get_pork_black_peach_count: this.data.get_pork_black_peach_count - 1,
+        })
+        break;
+      case 1:
+        this.setData({
+          get_pork_red_heart_count: this.data.get_pork_red_heart_count - 1,
+        })
+        break;
+      case 2:
+        this.setData({
+          get_pork_black_flower_count: this.data.get_pork_black_flower_count - 1,
+        })
+        break;
+      default:
+        this.setData({
+          get_pork_red_block_count: this.data.get_pork_red_block_count - 1
+        })
+        break;
+    };
+    that.check_card_1();
+    that.check_winner();
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player1_black_peach_count: this.data.player1_black_peach.length,
+      player1_red_heart_count: this.data.player1_red_heart.length,
+      player1_black_flower_count: this.data.player1_black_flower.length,
+      player1_red_block_count: this.data.player1_red_block.length
+    });
+    that.set_top_card_1()
+    if (this.data.get_pork_set.length == 0) {
+      this.setData({
+        get_pork_block: true
+      })
+    };
+    setTimeout(() => {
+      // 延迟后操作
+      that.selectWay()
+    }, 2000)
   },
 
   toHome: function () {
@@ -458,7 +396,329 @@ Page({
 
   StartGameAgin: function () {
     wx.reLaunch({
-      url: '../confict_noline/confict_noline',
+      url: '../confict_person_with_ai/confict_person_with_ai',
     })
+  },
+
+  check_card_1: function () {
+    if (Math.floor((this.data.now_value - 1) / 13) == Math.floor((this.data.last_value - 1) / 13)) {
+      while (this.data.set_pork_set.length != 0) {
+        var pork_1 = this.data.set_pork_set.pop();
+        switch (Math.floor((pork_1.value - 1) / 13)) {
+          case 0:
+            this.data.player1_black_peach.push(pork_1);
+            break;
+          case 1:
+            this.data.player1_red_heart.push(pork_1);
+            break;
+          case 2:
+            this.data.player1_black_flower.push(pork_1);
+            break;
+          default:
+            this.data.player1_red_block.push(pork_1);
+            break;
+        }
+      }
+      this.data.last_value = null;
+      this.data.now_value = null;
+    }
+  },
+
+  check_card_2: function () {
+    if (Math.floor((this.data.now_value - 1) / 13) == Math.floor((this.data.last_value - 1) / 13)) {
+      while (this.data.set_pork_set.length != 0) {
+        var pork_1 = this.data.set_pork_set.pop();
+        switch (Math.floor((pork_1.value - 1) / 13)) {
+          case 0:
+            this.data.player2_black_peach.push(pork_1);
+            this.data.AI_pork_set.push(pork_1)
+            break;
+          case 1:
+            this.data.player2_red_heart.push(pork_1);
+            this.data.AI_pork_set.push(pork_1)
+            break;
+          case 2:
+            this.data.player2_black_flower.push(pork_1);
+            this.data.AI_pork_set.push(pork_1)
+            break;
+          default:
+            this.data.player2_red_block.push(pork_1);
+            this.data.AI_pork_set.push(pork_1)
+            break;
+        }
+      }
+      this.data.last_value = null;
+      this.data.now_value = null;
+    }
+  },
+
+  set_top_card_1: function () {
+    this.setData({
+      player1_top_black_peach: this.data.player1_black_peach.pop(),
+      player1_top_red_heart: this.data.player1_red_heart.pop(),
+      player1_top_black_flower: this.data.player1_black_flower.pop(),
+      player1_top_red_block: this.data.player1_red_block.pop()
+    })
+    if (this.data.player1_top_black_peach != null) {
+      this.data.player1_black_peach.push(this.data.player1_top_black_peach)
+    }
+    if (this.data.player1_top_red_heart != null) {
+      this.data.player1_red_heart.push(this.data.player1_top_red_heart)
+    }
+    if (this.data.player1_top_black_flower != null) {
+      this.data.player1_black_flower.push(this.data.player1_top_black_flower)
+    }
+    if (this.data.player1_top_red_block != null) {
+      this.data.player1_red_block.push(this.data.player1_top_red_block)
+    }
+  },
+
+  set_top_card_2: function () {
+    this.setData({
+      player2_top_black_peach: this.data.player2_black_peach.pop(),
+      player2_top_red_heart: this.data.player2_red_heart.pop(),
+      player2_top_black_flower: this.data.player2_black_flower.pop(),
+      player2_top_red_block: this.data.player2_red_block.pop()
+    })
+    if (this.data.player2_top_black_peach != null) {
+      this.data.player2_black_peach.push(this.data.player2_top_black_peach)
+    }
+    if (this.data.player2_top_red_heart != null) {
+      this.data.player2_red_heart.push(this.data.player2_top_red_heart)
+    }
+    if (this.data.player2_top_black_flower != null) {
+      this.data.player2_black_flower.push(this.data.player2_top_black_flower)
+    }
+    if (this.data.player2_top_red_block != null) {
+      this.data.player2_red_block.push(this.data.player2_top_red_block)
+    }
+  },
+
+  player1_clicked_card_1: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player1_black_peach.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_1()
+    this.setData({
+        now_pork: this.data.now_pork,
+        now_index: (this.data.now_index + 1) % 2,
+        set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+        get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+        player1_black_peach_count: this.data.player1_black_peach.length,
+        player1_red_heart_count: this.data.player1_red_heart.length,
+        player1_black_flower_count: this.data.player1_black_flower.length,
+        player1_red_block_count: this.data.player1_red_block.length
+      }),
+      that.set_top_card_1(),
+      setTimeout(() => {
+        // 延迟后操作
+        that.selectWay()
+      }, 2000)
+  },
+
+  player1_clicked_card_2: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player1_red_heart.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_1()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player1_black_peach_count: this.data.player1_black_peach.length,
+      player1_red_heart_count: this.data.player1_red_heart.length,
+      player1_black_flower_count: this.data.player1_black_flower.length,
+      player1_red_block_count: this.data.player1_red_block.length
+    })
+    that.set_top_card_1(),
+    setTimeout(() => {
+      // 延迟后操作
+      that.selectWay()
+    }, 2000)
+  },
+
+  player1_clicked_card_3: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player1_black_flower.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_1()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player1_black_peach_count: this.data.player1_black_peach.length,
+      player1_red_heart_count: this.data.player1_red_heart.length,
+      player1_black_flower_count: this.data.player1_black_flower.length,
+      player1_red_block_count: this.data.player1_red_block.length
+    })
+    that.set_top_card_1(),
+    setTimeout(() => {
+      // 延迟后操作
+      that.selectWay()
+    }, 2000)
+  },
+
+  player1_clicked_card_4: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player1_red_block.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_1()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player1_black_peach_count: this.data.player1_black_peach.length,
+      player1_red_heart_count: this.data.player1_red_heart.length,
+      player1_black_flower_count: this.data.player1_black_flower.length,
+      player1_red_block_count: this.data.player1_red_block.length
+    })
+    that.set_top_card_1(),
+    setTimeout(() => {
+      // 延迟后操作
+      that.selectWay()
+    }, 2000)
+  },
+
+  player2_clicked_card_1: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player2_black_peach.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_2()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player2_black_peach_count: this.data.player2_black_peach.length,
+      player2_red_heart_count: this.data.player2_red_heart.length,
+      player2_black_flower_count: this.data.player2_black_flower.length,
+      player2_red_block_count: this.data.player2_red_block.length
+    })
+    that.set_top_card_2()
+  },
+
+  player2_clicked_card_2: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player2_red_heart.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_2()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player2_black_peach_count: this.data.player2_black_peach.length,
+      player2_red_heart_count: this.data.player2_red_heart.length,
+      player2_black_flower_count: this.data.player2_black_flower.length,
+      player2_red_block_count: this.data.player2_red_block.length
+    })
+    that.set_top_card_2()
+  },
+
+  player2_clicked_card_3: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player2_black_flower.pop();
+    console.log(this.data.now_pork);
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_2()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player2_black_peach_count: this.data.player2_black_peach.length,
+      player2_red_heart_count: this.data.player2_red_heart.length,
+      player2_black_flower_count: this.data.player2_black_flower.length,
+      player2_red_block_count: this.data.player2_red_block.length
+    })
+    that.set_top_card_2()
+  },
+
+  player2_clicked_card_4: function () {
+    var that = this;
+    this.data.last_value = this.data.now_value;
+    this.data.now_pork = this.data.player2_red_block.pop();
+    this.data.now_value = this.data.now_pork.value;
+    this.data.set_pork_set.push(this.data.now_pork)
+    that.check_card_2()
+    this.setData({
+      now_pork: this.data.now_pork,
+      now_index: (this.data.now_index + 1) % 2,
+      set_pork_block: this.data.set_pork_set.length == 0 ? false : true,
+      get_pork_block: this.data.get_pork_set.length == 0 ? false : true,
+      player2_black_peach_count: this.data.player2_black_peach.length,
+      player2_red_heart_count: this.data.player2_red_heart.length,
+      player2_black_flower_count: this.data.player2_black_flower.length,
+      player2_red_block_count: this.data.player2_red_block.length
+    })
+    that.set_top_card_2()
+  },
+
+  check_winner: function () {
+    if (this.data.get_pork_set.length == 0) {
+      this.setData({
+        Gaming: false
+      })
+      if (this.data.player1_black_peach_count + this.data.player1_red_heart_count + this.data.player1_black_flower_count + this.data.player1_red_block_count > this.data.player2_black_peach_count + this.data.player2_red_heart_count + this.data.player2_black_flower_count + this.data.player2_red_block_count) {
+        this.setData({
+          winner: this.data.player_2
+        })
+      } else {
+        this.setData({
+          winner: this.data.player_1
+        })
+      }
+    }
+  },
+
+  selectWay: function () {
+    var that = this;
+    if (this.data.AI_pork_set.length == 0) {
+      that.POP_Get_pork_2();
+    } else {
+      var temp = this.data.AI_pork_set.pop();
+      this.setData({
+        now_pork:temp
+      })
+      console.log(temp);
+      switch (Math.floor((temp.value - 1) / 13)) {
+        case 0:
+          that.player2_clicked_card_1()
+          break;
+        case 1:
+          that.player2_clicked_card_2()
+          break;
+        case 2:
+          that.player2_clicked_card_3()
+          break;
+        default:
+          that.player2_clicked_card_4()
+          break;
+      }
+    }
   }
+
 })

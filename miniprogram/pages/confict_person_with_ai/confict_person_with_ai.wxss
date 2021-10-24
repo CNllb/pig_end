@@ -298,3 +298,29 @@
   text-align: center;
   font-family: "my_font";
 }
+
+.get_card_auto{
+  position: absolute;
+  right: 40rpx;
+  top: 210rpx;
+  width: 140rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+  font-size: 25rpx;
+  font-family: "my_font";
+  background-color: #9ca8b8;
+  text-align: center;
+}
+
+.end_turn_auto{
+  position: absolute;
+  right: 40rpx;
+  top: 260rpx;
+  width: 140rpx;
+  height: 40rpx;
+  border-radius: 10rpx;
+  font-size: 25rpx;
+  font-family: "my_font";
+  background-color: #9ca8b8;
+  text-align: center;
+}
