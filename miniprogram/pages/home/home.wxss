@@ -1,0 +1,156 @@
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.user_id {
+  position: absolute;
+  color: white;
+  font-size: 18rpx;
+  top: 8rpx;
+  left: 80rpx;
+  z-index: 2;
+}
+
+.container_1 {
+  position: absolute;
+  top: 5rpx;
+  left: 10rpx;
+  width: 150rpx;
+  height: 50rpx;
+  background-color: black;
+  border-radius: 50rpx;
+  z-index: 1;
+}
+
+.user_logo {
+  position: absolute;
+  top: 4rpx;
+  left: 10rpx;
+  height: 52rpx;
+  width: 52rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+  box-shadow: black;
+  z-index: 2;
+}
+
+.fastpass_container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50rpx;
+  width: 100%;
+  background-color: black;
+}
+
+.setting_icon {
+  position: absolute;
+  bottom: 5rpx;
+  left: 30rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.pages_icon {
+  position: absolute;
+  bottom: 5rpx;
+  left: 70rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.fast_pass {
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+  width: 230rpx;
+  height: 55rpx;
+  border-radius: 50rpx 0rpx 0rpx 0rpx;
+  background-color: #8696a7;
+  z-index: 2;
+}
+
+.fast_pass_text {
+  position: absolute;
+  bottom: 8rpx;
+  right: 20rpx;
+  font-size: 25rpx;
+  font-style: oblique;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  letter-spacing: 3rpx;
+  color: white;
+}
+
+.classic_container {
+  position: absolute;
+  top: 70rpx;
+  left: 50rpx;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  z-index: 1;
+  border: 1rpx solid white;
+}
+
+.confict_ai {
+  position: absolute;
+  top: 70rpx;
+  left: 260rpx;
+  width: 390rpx;
+  height: 95rpx;
+  background-color: #E0EBDF;
+  border-radius: 10rpx;
+  font-family: "my_font";
+  font-size: 35rpx;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.confict_without_internet {
+  position: absolute;
+  top: 175rpx;
+  left: 260rpx;
+  height: 95rpx;
+  width: 190rpx;
+  border-radius: 10rpx;
+  background-color: #c1cbd7;
+  font-family: "my_font";
+  font-size: 35rpx;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.confict_ai_to_ai {
+  position: absolute;
+  top: 175rpx;
+  left: 460rpx;
+  height: 95rpx;
+  width: 190rpx;
+  border-radius: 10rpx;
+  background-color: #bfbfbf;
+  overflow: hidden;
+  font-family: "my_font";
+  font-size: 35rpx;
+  z-index: 1;
+}
+
+.classic_container_text{
+  position: absolute;
+  top: 10rpx;
+  left: 5rpx;
+  font-size: 40rpx;
+  color: #511F1E;
+  font-weight: 500;
+  font-family: 'my_font';
+  writing-mode: vertical-lr;
+  z-index: 2;
+}

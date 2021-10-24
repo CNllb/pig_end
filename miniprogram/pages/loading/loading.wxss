@@ -1,0 +1,134 @@
+/* pages/loading/loading.wxss */
+
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.login_button{
+  position: absolute;
+  bottom: 40rpx;
+  left: 283rpx;
+  width: 200rpx;
+  height: 55rpx;
+  border-radius: 50rpx;
+  z-index: 2;
+  box-shadow: black;
+}
+
+.login_button_text{
+  position: absolute;
+  top: 10rpx;
+  left: 30rpx;
+  font-size: 35rpx;
+  color: white;
+  font-family: "my_font";
+}
+
+.Dialog{
+  position: absolute;
+  left: 80rpx;
+  top: 20rpx;
+  background-color: #fdf9ee;
+  width: 600rpx;
+  height: 260rpx;
+  z-index: 4;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.Dialog_container1{
+  position: absolute;
+  width: 100%;
+  height: 60rpx;
+  background-color:#b5c4b1;
+}
+
+
+.Dialog_container2{
+  position: absolute;
+  width: 100%;
+  top: 60rpx;
+  height: 200rpx;
+}
+
+.icon_container{
+  position: relative;
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.login_title{
+  position: absolute;
+  top: 10rpx;
+  left: 250rpx;
+  font-size: 25rpx;
+  color: #fffaf4;
+}
+
+.login_text_1{
+  position: relative;
+  top: 10rpx;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  font-family: "my_font";
+}
+
+.login_text_2{
+  position: relative;
+  top: 20rpx;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  font-family: "my_font";
+}
+
+.login{
+  position: relative;
+  top: 40rpx;
+  left: 200rpx;
+  width: 200rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  background-color: #8696a7;
+  text-align: center;
+  font-size: 35rpx;
+  color: white;
+  font-family: "my_font";
+}
+
+.input_1{
+  position: absolute;
+  width: 400rpx;
+  left: 100rpx;
+  top: 5rpx;
+  height: 40rpx;
+  background-color:white;
+  border-radius: 10rpx 50rpx 50rpx 10rpx;
+}
+
+.input_2{
+  position: absolute;
+  width: 400rpx;
+  left: 100rpx;
+  top: 55rpx;
+  height: 40rpx;
+  background-color:white;
+  border-radius: 10rpx 50rpx 50rpx 10rpx;
+}
+
+.title{
+  position: absolute;
+  font-size: 100rpx;
+  text-align: center;
+  width: 400rpx;
+  height: 100rpx;
+  top: 60rpx;
+  left: 180rpx;
+  font-family: "my_font";
+}

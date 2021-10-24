@@ -1,0 +1,11 @@
+<!--pages/setting/setting.wxml-->
+<image src="../../images/init_background.jpg" class=".bg" mode="aspectFill"></image>
+<view class="container_1" style="opacity: 0.3;"></view>
+<view class="Dialog">
+  <view class="Dialog_container1">
+    <view class="icon_container">
+      <view class="iconfont icon-back1 icon_container" style="color: blanchedalmond; font-size: 30rpx;" bindtap="toHome"></view>
+    </view>
+    <text class="setting_title">设置</text>
+  </view>
+</view>

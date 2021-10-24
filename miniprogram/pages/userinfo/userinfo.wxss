@@ -1,0 +1,133 @@
+/* pages/setting/setting.wxss */
+.bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container_1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: 1;
+}
+
+.Dialog{
+  position: absolute;
+  left: 80rpx;
+  bottom: 10rpx;
+  background-color: #fdf9ee;
+  width: 600rpx;
+  height: 300rpx;
+  z-index: 4;
+  border-radius: 15rpx;
+  overflow: hidden;
+}
+
+.Dialog_container1{
+  position: absolute;
+  width: 100%;
+  height: 60rpx;
+  background-color:#b5c4b1;
+}
+
+.icon_container{
+  position: relative;
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.mine_info{
+  position: absolute;
+  top: 10rpx;
+  left: 250rpx;
+  font-size: 25rpx;
+  color: #fffaf4;
+}
+
+.Dialog_container2{
+  position: relative;
+  top: 60rpx;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.Dialog_container2_menu{
+  flex: 1;
+  background-color: #d8caaf;
+}
+
+.Dialog_container2_info{
+  flex: 4;
+}
+
+.menu_text{
+  position: absolute;
+  top: 5rpx;
+  text-align: center;
+}
+
+.user_logo_1{
+  position: relative;
+  top: 40rpx;
+  left: 80rpx;
+  height: 70rpx;
+  width: 70rpx;
+  overflow: hidden;
+  border: 1rpx solid  lightskyblue;
+  border-radius: 50rpx;
+  border-width: 1rpx;
+}
+
+.user_id_1{
+  position: relative;
+  top: 45rpx;
+  left: 93rpx;
+  font-size: 20rpx;
+  color: #656565
+}
+
+.Dialog_container_menu_single_clicked{
+  position: relative;
+  width: 100%;
+  height: 40rpx;
+  margin-top: 0rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #fffaf4;
+  background-color: orange;
+  border-radius: 50rpx;
+}
+
+.Dialog_container_menu_single{
+  position: relative;
+  width: 100%;
+  height: 40rpx;
+  margin-top: 0rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #656565;
+}
+
+.Dialog_container_info_single{
+  font-size: 20rpx;
+  color: #656565;
+  margin-top: 8rpx;
+}
+
+.Dialog_container_3{
+  position: absolute;
+  top: 20rpx;
+  left: 350rpx;
+  width: 200rpx;
+  height: 220rpx;
+}

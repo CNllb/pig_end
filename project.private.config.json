@@ -1,0 +1,60 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "设置",
+          "pathName": "pages/setting/setting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人信息",
+          "pathName": "pages/userinfo/userinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "离线对战",
+          "pathName": "pages/confict_noline/confict_noline",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录界面",
+          "pathName": "pages/loading/loading",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "经典对局",
+          "pathName": "pages/confict_classic/confict_classic",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "人机对战",
+          "pathName": "pages/confict_person_with_ai/confict_person_with_ai",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

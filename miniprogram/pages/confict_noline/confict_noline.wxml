@@ -1,0 +1,178 @@
+<view>
+  <image class="bg" src="../../images/confict_background.jpg"></image>
+  <view wx:if="{{isStarted}}">
+    <view wx:if="{{Gaming}}">
+      <view wx:if="{{now_index}}">
+        <view wx:if="{{get_pork_block}}">
+          <image src="{{back_pork}}" class="get_card" bindtap="POP_Get_pork_2"></image>
+        </view>
+        <view wx:else>
+          <view class="get_card" style="opacity: 0.6;" >
+            <text class="block_font">取牌区</text>
+          </view>
+        </view>
+        <view wx:if="{{set_pork_block}}">
+          <image src="{{now_pork.image_Util}}" class="set_card"></image>
+        </view>
+        <view wx:else>
+          <view class="set_card" style="opacity: 0.6;">
+            <text class="block_font">置牌区</text>
+          </view>
+        </view>
+        <view class="person_trun" style="opacity: 0.8;">
+          <view class="person_trun_text">当前轮到{{player_2}}的回合</view>
+        </view>
+        <view class="card_detail">
+          <view class="handcard">手牌</view>
+          <view style="color: black;">黑桃：{{player2_black_peach_count}}</view>
+          <view style="color: red;">红心：{{player2_red_heart_count}}</view>
+          <view style="color: black;">梅花：{{player2_black_flower_count}}</view>
+          <view style="color: red;">方块：{{player2_red_block_count}}</view>
+        </view>
+        <view wx:if="{{player2_black_peach_count == 0}}">
+          <view class="black_peach_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: black; letter-spacing: 15rpx;">黑桃</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="black_peach_block" src="{{player2_top_black_peach.image_Util}}" bindtap="player2_clicked_card_1"></image>
+        </view>
+        <view wx:if="{{player2_red_heart_count == 0}}">
+          <view class="red_heart_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: red; letter-spacing: 15rpx;">红心</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="red_heart_block" src="{{player2_top_red_heart.image_Util}}" bindtap="player2_clicked_card_2"></image>
+        </view>
+        <view wx:if="{{player2_black_flower_count == 0}}">
+          <view class="black_flower_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: black; letter-spacing: 15rpx;">梅花</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="black_flower_block" src="{{player2_top_black_flower.image_Util}}" bindtap="player2_clicked_card_3"></image>
+        </view>
+        <view wx:if="{{player2_red_block_count == 0}}">
+          <view class="red_block_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: red; letter-spacing: 15rpx;">方块</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="red_block_block" src="{{player2_top_red_block.image_Util}}" bindtap="player2_clicked_card_4"></image>
+        </view>
+        <view class="count_card" style="opacity: 0.6;">
+          <view class="count_card_title">记牌器</view>
+          <view class="count_card_main_1">
+            <view class="count_card_1">桃</view>
+            <view class="count_card_2">心</view>
+            <view class="count_card_3">花</view>
+            <view class="count_card_4">块</view>
+          </view>
+          <view class="count_card_main_2">
+            <view class="count_card_1">{{get_pork_black_peach_count}}</view>
+            <view class="count_card_2">{{get_pork_red_heart_count}}</view>
+            <view class="count_card_3">{{get_pork_black_flower_count}}</view>
+            <view class="count_card_4">{{get_pork_red_block_count}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view wx:if="{{get_pork_block}}">
+          <image src="{{back_pork}}" class="get_card" bindtap="POP_Get_pork_1"></image>
+        </view>
+        <view wx:else>
+          <view class="get_card" style="opacity: 0.6;" bindtap="POP_Get_pork_1">
+            <text class="block_font">取牌区</text>
+          </view>
+        </view>
+        <view wx:if="{{set_pork_block}}">
+          <image src="{{now_pork.image_Util}}" class="set_card"></image>
+        </view>
+        <view wx:else>
+          <view class="set_card" style="opacity: 0.6;">
+            <text class="block_font">置牌区</text>
+          </view>
+        </view>
+        <view class="person_trun" style="opacity: 0.8;">
+          <view class="person_trun_text">当前轮到{{player_1}}的回合</view>
+        </view>
+        <view class="card_detail">
+          <view class="handcard">手牌</view>
+          <view style="color: black;">黑桃：{{player1_black_peach_count}}</view>
+          <view style="color: red;">红心：{{player1_red_heart_count}}</view>
+          <view style="color: black;">梅花：{{player1_black_flower_count}}</view>
+          <view style="color: red;">方块：{{player1_red_block_count}}</view>
+        </view>
+        <view wx:if="{{player1_black_peach_count == 0}}">
+          <view class="black_peach_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: black; letter-spacing: 15rpx;">黑桃</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="black_peach_block" src="{{player1_top_black_peach.image_Util}}" bindtap="player1_clicked_card_1"></image>
+        </view>
+        <view wx:if="{{player1_red_heart_count == 0}}">
+          <view class="red_heart_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: red; letter-spacing: 15rpx;">红心</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="red_heart_block" src="{{player1_top_red_heart.image_Util}}" bindtap="player1_clicked_card_2"></image>
+        </view>
+        <view wx:if="{{player1_black_flower_count == 0}}">
+          <view class="black_flower_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: black; letter-spacing: 15rpx;">梅花</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="black_flower_block" src="{{player1_top_black_flower.image_Util}}" bindtap="player1_clicked_card_3"></image>
+        </view>
+        <view wx:if="{{player1_red_block_count == 0}}">
+          <view class="red_block_block" style="opacity: 0.6;">
+            <view class="block_font" style="color: red; letter-spacing: 15rpx;">方块</view>
+          </view>
+        </view>
+        <view wx:else>
+          <image class="red_block_block" src="{{player1_top_red_block.image_Util}}" bindtap="player1_clicked_card_4"></image>
+        </view>
+        <view class="count_card" style="opacity: 0.6;">
+          <view class="count_card_title">记牌器</view>
+          <view class="count_card_main_1">
+            <view class="count_card_1">桃</view>
+            <view class="count_card_2">心</view>
+            <view class="count_card_3">花</view>
+            <view class="count_card_4">块</view>
+          </view>
+          <view class="count_card_main_2">
+            <view class="count_card_1">{{get_pork_black_peach_count}}</view>
+            <view class="count_card_2">{{get_pork_red_heart_count}}</view>
+            <view class="count_card_3">{{get_pork_black_flower_count}}</view>
+            <view class="count_card_4">{{get_pork_red_block_count}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="end_game">
+        游戏结束
+      </view>
+      <view class="winner_name">
+        恭喜{{winner}}获得本次游戏的胜利!!!
+      </view>
+      <view class="start_again">
+        <view class="strat_game_text" bindtap="StartGameAgin">再来一次</view>
+      </view>
+      <view class="iconfont icon-exit-full back" style="font-size: 40rpx;z-index: 2;" bindtap="toHome"></view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="noline_title">
+      离线对战
+    </view>
+    <view class="start_game" style="opacity: 0.8;">
+      <text class="strat_game_text" bindtap="StartGame">开始游戏</text>
+    </view>
+    <view class="iconfont icon-exit-full back" style="font-size: 40rpx;z-index: 2;" bindtap="toHome"></view>
+  </view>
+</view>

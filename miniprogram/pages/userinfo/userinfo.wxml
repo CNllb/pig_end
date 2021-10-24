@@ -1,0 +1,44 @@
+<!--pages/setting/setting.wxml-->
+<image src="../../images/init_background.jpg" class=".bg" mode="aspectFill"></image>
+<view class="container_1" style="opacity: 0.3;"></view>
+<view class="Dialog">
+  <view class="Dialog_container1">
+    <view class="icon_container">
+      <view class="iconfont icon-back1 icon_container" style="color: blanchedalmond; font-size: 30rpx;"
+        bindtap="toHome"></view>
+    </view>
+    <text class="mine_info">个人信息</text>
+  </view>
+  <view class="Dialog_container2">
+    <view class="Dialog_container2_menu">
+      <view wx:if="{{showMineInfo}}">
+        <view class="Dialog_container_menu_single_clicked">
+          <text class="menu_text">资料</text>
+        </view>
+        <view class="Dialog_container_menu_single" bindtap="toResult">战绩</view>
+      </view>
+      <view wx:else>
+        <view class="Dialog_container_menu_single" bindtap="toMineInfo">资料</view>
+        <view class="Dialog_container_menu_single_clicked">
+          <text class="menu_text">战绩</text>
+        </view>
+      </view>
+    </view>
+    <view class="Dialog_container2_info">
+      <view wx:if="{{showMineInfo}}">
+        <view class="user_logo_1">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName" class="user_id_1"></open-data>
+        <view class="Dialog_container_3">
+          <view class="Dialog_container_info_single">性别：{{user_gender}}</view>
+          <view class="Dialog_container_info_single">城市：{{user_city}}</view>
+          <view class="Dialog_container_info_single">战绩：{{user_win_counter}} 胜 / {{user_loser_counter}} 负</view>
+          <view class="Dialog_container_info_single">胜率：{{user_win_percent}}</view>
+        </view>
+      </view>
+      <view wx:else>
+      </view>
+    </view>
+  </view>
+</view>

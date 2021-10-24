@@ -1,0 +1,1 @@
+"E:\微信web开发者工具\cli.bat" cloud functions deploy --e pig-end-7gjiedyf4997574e --n quickstartFunctions --r --project "F:\pig_end" --report_start --report
